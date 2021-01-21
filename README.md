@@ -1,31 +1,28 @@
-# 05 Third-Party APIs/Day Scheduler
+# 06 Server-Side APIs: Weather Dashboard
 ## University of Arizona Bootcamp  
-## January 17, 2021
-### Vicky Loebel
+### Vicky Loebel - Jan 24, 2021  
 
-[vloebel.github.io/day-scheduler](https://vloebel.github.io/day-scheduler/) 
+[vloebel.github.io/server-api](https://vloebel.github.io/server-api/) 
 
 **Modification History**  
 
-* load and save from local storage
-* write list and style calendar
+
 * Set up HTML & basic CSS
 
 ## Overview
-Create a simple calendar application that allows the user to save events for each hour of the business day. The application uses the [Moment.js](https://momentjs.com/) library to work with date and time.
+This application uses uses the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. Search history or other persistant data are stored in the browser's `localStorage`.
 
 ## Requirements
-* Daily planner that saves and loads from local storage
-* Current date displayed at top of calendar
-* One timeblock for each hour from 9 to 5 (business hours)
-* Color code blocks relative to past/present/future
-* Click a timeblock to enter an event for that time
-* Clicking a save button saves that timeblock (only)
-* Data persists through browser refresh or reboot
+* City search returns current and future weather conditions for the city and adds city to search history
+* Displayed weather conditions include the city name, date, an icon representation of weather conditions,  temperature,  humidity,  wind speed, and the UV index  
+
+  * UV index includes a color that indicates whether the conditions are favorable, moderate, or severe
+  * Future weather conditions include a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
+  * Selecting a city from the search history starts over with the display for that city.
 
 ## Mockup
 
 The following animation demonstrates the application functionality:
 
-![day planner demo](./assets/img/05-third-party-apis-homework-demo.gif)
+![weather dashboard demo](./assets/06-server-side-apis-homework-demo.png)
 
