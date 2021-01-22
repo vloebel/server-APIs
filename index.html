@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>weather report</title>
+</head>
+
+<body>
+  <header class="jumbotron">
+    <h1 class="col-12">Weather Dashboard</h1>
+  </header>
+  <main class="container">
+    <!-- Search and history in one column, weather in the other -->
+    <!-- qq: does this need the row div? -->
+    <div class="row">
+      <section  class="col-lg-3 col-med-3 col-sm-12  search-section">
+        <div>
+          <h2 style="padding:1em 0em">Search for a city</h2>
+          <input type="text" id="searchCity" value="Tucson" />
+          <button onclick="myFunction()">Search</button>
+        </div>
+        <div id="search-history">
+          Append Search history here
+        </div>
+      </section>
+      <section id="weather-display">
+        <div id="currentConditions" class="col-lg-9 col-med-9 col-sm-12  forecast-section">
+          <div id="todaysForecast" style="border: 5px; padding:1em">
+            <h2><span id="city"> </span>I'm a city (<span id="date">01/01/1111) </span><span
+                id="weather-icon">"drips"</span></h2>
+            <p>Temperature: <span id="currentTemp"> 999</span></p>
+            <p>Humidity: <span id="currentHumidity"> 999</span></p>
+            <p>Wind Speed: <span id="currentWindSpeed"> 999</span></p>
+            <p>UV Index: <span id="currentUV"> 999</span></p>
+
+          </div>
+        </div>
+        <div id="five-day-forecast">
+          <h2> 5-Day Forecast</h2>
+          <div class="container">
+            <div class="row">
+              cards for the next five days with date, icon, temp, humidity
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end of container -->
+    </div>
+  </main>
+  
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

@@ -22,7 +22,7 @@ This application uses uses the [OpenWeather API](https://openweathermap.org/api)
 
 ## Mockup
 
-The following animation demonstrates the application functionality:
+The following image shows the application appearance and functionality:
 
 ![weather dashboard demo](./assets/06-server-side-apis-homework-demo.png)
 
