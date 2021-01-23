@@ -68,16 +68,18 @@ function getWeatherData() {
       var cUViEl = document.getElementById("current-uvi");
       cUViEl.textContent = data.current.uvi;
 
-
-      
-     // get the bits we want
-      console.log(`temp = ${data.current.temp}`);
-      console.log(`humidity = ${data.current.humidity}`);
-      console.log(`UV Index = ${data.current.uvi}`);
-      console.log(`wind speed = ${data.current.wind_speed}`);
-      console.log(`icon is = ${data.current.weather[0].icon}`);
-
       // get the forecast
+
+      for (var i = 1; i <= 5; i++) { 
+        var new_date = moment(today, "MM-DD-YYYY").add(i, 'days').format("MM-DD-YYYY");
+        // console.log(`${new_date}`);
+        var cardId = `today-plus-` + `${i}`;
+        var cardIdEl = document.getElementById(cardId);
+        cardIdEl.textContent = new_date;
+      }
+
+
+
       // console.log(`5-DAY FORECAST`);
       // for (var i = 1; i < 5; i++) { 
       //   console.log(`----DAY--- ${i}:`);
@@ -98,11 +100,7 @@ let today = moment().format("MM-DD-YYYY")
 console.log(`TODAY IS ${today}`);
 console.log(`NEXT FIVE DAYS ARE`);
 
-for (var i = 1; i <= 5; i++) { 
-  var new_date = moment(today, "MM-DD-YYYY").add(i, 'days').format("MM-DD-YYYY");
-  console.log(`${new_date}`);
 
-}
 
 getWeatherData();
 
