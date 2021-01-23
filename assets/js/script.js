@@ -13,7 +13,7 @@ const iconURL = "http://openweathermap.org/img/wn/"
 // APIkey username vk
 // ***********************************************
 function getWeatherData() { 
-  var searchCity = document.getElementById('searchCity').value;
+  var searchCity = document.getElementById('searchcity').value;
   // Get current weather conditions
   // and the lat long of the indicated city
 
@@ -52,7 +52,7 @@ function getWeatherData() {
       // get the forecast
       console.log(`5-DAY FORECAST`);
       for (var i = 1; i < 5; i++) { 
-        console.log(`forecast day ${i}:`);
+        console.log(`----DAY--- ${i}:`);
         console.log(`clouds ${data.daily[i].clouds}:`);
         console.log(`temp ${data.daily[i].temp.day}:`);
         console.log(`humidity ${data.daily[i].humidity}:`);
@@ -60,4 +60,34 @@ function getWeatherData() {
     });
   });
 }
+////////////////////////////////
+//       MAIN PROGRAM
+////////////////////////////////
 
+let today = moment().format("MM-DD-YYYY")
+console.log(`TODAY IS ${today}`);
+console.log(`NEXT FIVE DAYS ARE`);
+
+for (var i = 1; i <= 5; i++) { 
+  var new_date = moment(today, "MM-DD-YYYY").add(i, 'days').format("MM-DD-YYYY");
+  console.log(`${new_date}`);
+
+}
+// var searchCityEl = document.getElementById("search-city");
+// var searchCity = searchCityEl.value;
+// var searchCity = document.getElementById('search-city').value;
+// console.log(`search-city ${searchCity}`);
+// // searchCityEl.textContent = searchCity;
+
+// var dateTodayEl = document.getElementById("date-today");
+// dateTodayEl.textContent = ` (${today}) `;
+
+// var displayCityEl = document.getElementById("display-city");
+// displayCityEl.textContent = searchCity;
+
+// decrementEl.addEventListener('click', function() {
+//   if (count > 0) {
+//     count--;
+//     setCounterText();
+//   }
+// });
