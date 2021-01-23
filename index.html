@@ -20,7 +20,7 @@
       <section  class="col-lg-3 col-med-3 col-sm-12  search-section">
         <div>
           <h2 style="padding:1em 0em">Search for a city</h2>
-          <input type="text" id="searchCity" value="Tucson" />
+          <input type="text" id="searchcity" value="Tucson">
           <button onclick="getWeatherData()">Search</button>
         </div>
         <div id="search-history">
@@ -29,13 +29,16 @@
       </section>
       <section id="weather-display">
         <div id="currentConditions" class="col-lg-9 col-med-9 col-sm-12  forecast-section">
-          <div id="todaysForecast" style="border: 5px; padding:1em">
-            <h2><span id="city"> </span>I'm a city <span id="date-today"></span><span
-                id="weather-icon">"drips"</span></h2>
-            <p>Temperature: <span id="currentTemp"> 999</span></p>
-            <p>Humidity: <span id="currentHumidity"> 999</span></p>
-            <p>Wind Speed: <span id="currentWindSpeed"> 999</span></p>
-            <p>UV Index: <span id="currentUV"> 999</span></p>
+          <div id="forecast-today" style="border: 5px; padding:1em">
+            <h2><span id="display-city"> </span> 
+              <span id="date-today"></span>
+              <img id="current-weather-icon" class="inlineIcon" src=" " alt="current weather icon">
+            </h2>
+           
+            <p>Temperature: <span id="current-temp"> </span></p>
+            <p>Humidity: <span id="current-humidity"> </span></p>
+            <p>Wind Speed: <span id="current-wind-speed"> </span></p>
+            <p>UV Index: <span id="current-uvi"> </span></p>
 
           </div>
         </div>
@@ -43,7 +46,20 @@
           <h2> 5-Day Forecast</h2>
           <div class="container">
             <div class="row">
-              cards for the next five days with date, icon, temp, humidity
+              <!-- Add a Card -->
+        <div class="col-md-4">
+          <div class="card mt-2">
+            <div class="card-body">
+              <h5 class="card-title">Today+1</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+         
             </div>
           </div>
         </div>
