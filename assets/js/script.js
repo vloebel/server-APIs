@@ -70,7 +70,7 @@ function getWeatherData() {
 
       // build the forecast cards
 
-      for (var i = 1; i <= 1; i++) { 
+      for (var i = 1; i <= 5; i++) { 
         // date
         var new_date = moment(today, "MM-DD-YYYY").add(i, 'days').format("MM-DD-YYYY");
         var cardId = `today-plus-` + `${i}`;
@@ -86,13 +86,7 @@ function getWeatherData() {
       }
 
 
-
-      //   console.log(`clouds ${data.daily[i].clouds}:`);
-      //   console.log(`temp ${data.daily[i].temp.day}:`);
-      //   console.log(`humidity ${data.daily[i].humidity}:`);
-      //   console.log(`icon is = ${data.daily[i].weather[0].icon}:`);
-
-      // }
+     
     });
   });
 }
