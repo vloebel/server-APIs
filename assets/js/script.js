@@ -68,21 +68,25 @@ function getWeatherData() {
       var cUViEl = document.getElementById("current-uvi");
       cUViEl.textContent = data.current.uvi;
 
-      // get the forecast
+      // build the forecast cards
 
-      for (var i = 1; i <= 5; i++) { 
+      for (var i = 1; i <= 1; i++) { 
+        // date
         var new_date = moment(today, "MM-DD-YYYY").add(i, 'days').format("MM-DD-YYYY");
-        // console.log(`${new_date}`);
         var cardId = `today-plus-` + `${i}`;
-        var cardIdEl = document.getElementById(cardId);
-        cardIdEl.textContent = new_date;
+        var cardEl = document.getElementById(cardId);
+        var cardTitleEl = cardEl.querySelector(".card-date");
+        cardTitleEl.textContent = new_date;
+        var cardIconEl = cardEl.querySelector(".card-icon");
+        cardIconEl.setAttribute("src", `${iconURL}` + `${data.daily[i].weather[0].icon}.png`);
+        var cardTempEl = cardEl.querySelector(".card-temp");
+        cardTempEl.textContent = data.daily[i].temp.day;
+        var cardHumidityEl = cardEl.querySelector(".card-humidity");
+        cardHumidityEl.textContent = data.daily[i].humidity;
       }
 
 
 
-      // console.log(`5-DAY FORECAST`);
-      // for (var i = 1; i < 5; i++) { 
-      //   console.log(`----DAY--- ${i}:`);
       //   console.log(`clouds ${data.daily[i].clouds}:`);
       //   console.log(`temp ${data.daily[i].temp.day}:`);
       //   console.log(`humidity ${data.daily[i].humidity}:`);
