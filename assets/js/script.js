@@ -2,8 +2,9 @@
 
 const openWeatherAPI = "http://api.openweathermap.org/data/2.5/weather?q="
 const openWeatherOneCallAPI = "https://api.openweathermap.org/data/2.5/onecall?"
-const openWeatherForecastAPI = "https://api.openweathermap.org/data/2.5/forecast/daily?q="
-const excludeString = "&exclude=minutely,hourly,daily,alerts"
+// openWeatherForecastAPI is paid only
+// const openWeatherForecastAPI = "https://api.openweathermap.org/data/2.5/forecast/daily?q="
+const excludeString = "&exclude=minutely,hourly,alerts"
 const weatherUnits = "&units=imperial"
 const apiKey = "&appid=47cc7111aeaa92ded720903e4f89338c"
 const iconURL = "http://openweathermap.org/img/wn/"
@@ -37,38 +38,26 @@ function getWeatherData() {
       excludeString +
       apiKey
 
-    ).then(function (resp2) { 
+    ).then(function (resp2) {
       return resp2.json();
 
-    }).then(function (data) { 
-      console.log(`oneCallData`);
-      console.log(data);
+    }).then(function (data) {
+      console.log(`today`);
       // get the bits we want
       console.log(`temp = ${data.current.temp}`);
       console.log(`humidity = ${data.current.humidity}`);
       console.log(`UV Index = ${data.current.uvi}`);
-
       console.log(`wind speed = ${data.current.wind_speed}`);
 
+      // get the forecast
+      console.log(`5-DAY FORECAST`);
+      for (var i = 1; i < 5; i++) { 
+        console.log(`forecast day ${i}:`);
+        console.log(`clouds ${data.daily[i].clouds}:`);
+        console.log(`temp ${data.daily[i].temp.day}:`);
+        console.log(`humidity ${data.daily[i].humidity}:`);
+      }
     });
-    // now get the forecast for 5 days.
-    // question - excluding today? Doc is unclear
-    fetch(
-      openWeatherForecastAPI +
-      searchCity +
-      "&cnt=5" +
-      weatherUnits +
-      apiKey
-  
-    ).then(function (resp3) {
-      return resp3.json();
-  
-    }).then(function (data) {
-      console.log(`forecastData`);
-      console.log(data);
-    })
-
   });
-
 }
 
