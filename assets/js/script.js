@@ -152,12 +152,8 @@ function displayWeatherData(city) {
   });
 }
 
-
-
-
 ////////////////////////////////
 //       MAIN PROGRAM
-////////////////////////////////
 
 let today = moment().format("MM-DD-YYYY")
 
@@ -168,11 +164,12 @@ loadSearchHistory();
 // city searched and add search history
 var searchCityEl = document.getElementById('search-city');
 updateCityButtons();
-searchCityEl.textContent = lastSearch;
+searchCityEl.value = lastSearch;
+// searchCityEl.textContent = lastSearch;
 displayWeatherData(lastSearch);
 
 
-// search-button text field event listener
+// EVENT LISTENER ON SEARCH BUTTON
 // on click -get city - convert to uppercase
 // - add to search history - display weather 
 var cityEl = document.getElementById("search-button");
@@ -183,7 +180,7 @@ cityEl.addEventListener('click', function () {
   displayWeatherData(searchCity);
 });
 
-//search-history list event listener
+//EVENT LISTENER ON SEARCH HISTORY BUTTONS
 //on click - get city name from clicked button
 //- display weather  
 var cityListEl = document.getElementById("search-history");
