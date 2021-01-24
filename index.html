@@ -17,15 +17,18 @@
     <!-- Search and history in one column, weather in the other -->
     <!-- qq: does this need the row div? -->
     <div class="row">
-      <section  class="col-lg-3 col-med-3 col-sm-12  search-section">
-        <div>
+      <div id="search-col" class="col-lg-3 col-med-3 col-sm-12  search-section">
           <h2 style="padding:1em 0em">Search for a city</h2>
-          <input type="text" id="searchcity" value="Tucson">
-          <button onclick="getWeatherData()">Search</button>
-        </div>
-        <div id="search-history">
-          Append Search history here
-        </div>
+          <input type="text" id="search-city" value="Tucson">
+          <button id="search-button">Search</button>
+          <div id="search-history">
+            <!-- append cities here and listen for clicks -->
+            <button class="city-button">Denver</button>
+            <button class="city-button">Chicago</button>
+          </div>
+        
+        
+        
       </section>
       <section id="weather-display">
         <div id="currentConditions" class="col-lg-9 col-med-9 col-sm-12  forecast-section">

@@ -6,21 +6,46 @@ const openWeatherOneCallAPI = "https://api.openweathermap.org/data/2.5/onecall?"
 // const openWeatherForecastAPI = "https://api.openweathermap.org/data/2.5/forecast/daily?q="
 const excludeString = "&exclude=minutely,hourly,alerts"
 const weatherUnits = "&units=imperial"
+// APIkey username vk
 const apiKey = "&appid=47cc7111aeaa92ded720903e4f89338c"
 const iconURL = "http://openweathermap.org/img/wn/"
 
-const testIcon="http://openweathermap.org/img/wn/10d@2x.png"
-// ***********************************************
-// APIkey username vk
-// ***********************************************
-function getWeatherData() { 
-  searchCity = document.getElementById('searchcity').value;
+var searchCityList = ["ST. LOUIS", "ALBUQUERQUE", "LOS ANGELES", "MILWAUKEE"];
+var lastSearch = "MILWAUKEE";
+
+function updateCityButtons() {
+  var searchHistoryEl = document.getElementById('search-history');
+  searchHistoryEl.innerHTML = '';
+  
+  for (var i = 0; i < searchCityList.length; i++)  {
+    // console.log(`appending button ${i}: ${searchCityList[i]}`);
+    var newButton = document.createElement("button");
+    newButton.textContent = searchCityList[i];
+    newButton.setAttribute("class", "city-button")
+    searchHistoryEl.appendChild(newButton);
+  }
+}
+
+// search city list is saved in all caps to
+// reduce fussing with user input
+function addCityName(city) {
+  city = city.toUpperCase();
+  if (! searchCityList.includes(city)) {
+    console.log(`adding city ${city}`);
+    searchCityList.push(city);
+    lastSearch = city;
+
+    console.log(` ${searchCityList}`);
+    updateCityButtons();
+  }
+}
+function getWeatherData(city) { 
   // Get current weather conditions
-  // and the lat long of the indicated city
+  // and the lat long of the city
 
   fetch(
     openWeatherAPI +
-    searchCity +
+    city +
     weatherUnits +
     apiKey
 
@@ -45,10 +70,10 @@ function getWeatherData() {
     }).then(function (data) {
       //now we have all our data and can start to display
       console.log(data);
-      var searchCity = document.getElementById('searchcity').value;
+      // var searchCity = document.getElementById('searchcity').value;
       //  selected city
       var displayCityEl = document.getElementById('display-city');
-      displayCityEl.textContent = searchCity;
+      displayCityEl.textContent = city;
       //  today's date
       var dateTodayEl = document.getElementById("date-today");
       dateTodayEl.textContent = ` (${today}) `;
@@ -84,32 +109,41 @@ function getWeatherData() {
         var cardHumidityEl = cardEl.querySelector(".card-humidity");
         cardHumidityEl.textContent = data.daily[i].humidity;
       }
-
-
-     
     });
   });
 }
+
+
+
+
 ////////////////////////////////
 //       MAIN PROGRAM
 ////////////////////////////////
 
 let today = moment().format("MM-DD-YYYY")
-console.log(`TODAY IS ${today}`);
-console.log(`NEXT FIVE DAYS ARE`);
+// initialize display with default city
 
 
-
-getWeatherData();
-
-
-
+var searchCityEl = document.getElementById('search-city');
+searchCityEl.textContent = lastSearch;
+getWeatherData(lastSearch);
 
 
-// decrementEl.addEventListener('click', function() {
-//   if (count > 0) {
-//     count--;
-//     setCounterText();
-//   }
-// });
+//put an event listener on the search button
+var cityEl = document.getElementById("search-button");
+cityEl.addEventListener('click', function () {
+  searchCity = document.getElementById('search-city').value;
+  addCityName(searchCity);
+  getWeatherData(searchCity);
+});
 
+//put an event listener on the city list
+var cityListEl = document.getElementById("search-history");
+cityListEl.addEventListener('click', event => {
+  var searchCityEl = event.target;
+  searchCity = searchCityEl.textContent;
+  console.log(`Searching the clicked button: ${searchCity}`);
+  getWeatherData(searchCity);
+
+
+});
