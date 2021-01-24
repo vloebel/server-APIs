@@ -17,8 +17,11 @@
     <!-- Search and history in one column, weather in the other -->
     <div class="row search-and-display-box">
       <div id="search-col" class="col-lg-3 col-med-3 col-sm-12  search-section">
-        <h2 style="padding:1em 0em">Search for a city</h2>
-        <input type="text" id="search-city" value="Tucson">
+        <h2 class="city-prompt">Search for a city</h2>
+        <div id="city-error-msg">
+          <!-- append error message if city lookup fails--> 
+        </div>
+         <input type="text" id="search-city" value="Tucson">
         <button id="search-button">Search</button>
         <div id="search-history">
           <!-- append city list and listen for clicks -->
