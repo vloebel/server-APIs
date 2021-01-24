@@ -30,7 +30,7 @@ function saveSearchHistory () {
 
 function loadSearchHistory() {
   console.log("loading search history....")
-  var lastSearch = localStorage.getItem("lastSearch") || lastSearchDefault;
+  lastSearch = localStorage.getItem("lastSearch") || lastSearchDefault;
   // if (lastSearch == null) {
   //   lastSearch = lastSearchDefault;
   // } 
