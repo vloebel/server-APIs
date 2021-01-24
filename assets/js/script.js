@@ -30,16 +30,12 @@ function saveSearchHistory () {
 
 function loadSearchHistory() {
   console.log("loading search history....")
-  var lastSearch = localStorage.getItem("lastSearch");
-  if (lastSearch == null) {
-    lastSearch = lastSearchDefault;
-    console.log(`got ${lastSearch} from default`);
-  } 
-/////////////////   won't let me push to a null list ???????
-  searchCityList = JSON.parse(localStorage.getItem("searchCityList"));
-  if (searchCityList == null) {
-    console.log("pulled an empty searchCityList")
-  }
+  var lastSearch = localStorage.getItem("lastSearch") || lastSearchDefault;
+  // if (lastSearch == null) {
+  //   lastSearch = lastSearchDefault;
+  // } 
+  searchCityList = JSON.parse(localStorage.getItem("searchCityList")) || [];
+  
 }
 
 //////////////////////////////////////////
@@ -51,8 +47,7 @@ function loadSearchHistory() {
 function updateCityButtons() {
   var searchHistoryEl = document.getElementById('search-history');
   searchHistoryEl.innerHTML = '';
-  // can't get length of null list?
-  // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 
   for (var i = 0; i < searchCityList.length; i++) {
     // console.log(`appending button ${i}: ${searchCityList[i]}`);
     var newButton = document.createElement("button");
