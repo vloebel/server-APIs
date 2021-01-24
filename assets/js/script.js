@@ -10,8 +10,37 @@ const weatherUnits = "&units=imperial"
 const apiKey = "&appid=47cc7111aeaa92ded720903e4f89338c"
 const iconURL = "http://openweathermap.org/img/wn/"
 
-var searchCityList = ["ST. LOUIS", "ALBUQUERQUE", "LOS ANGELES", "MILWAUKEE"];
+var searchCityList = [];
 var lastSearch = "TUCSON";
+const lastSearchDefault = "TUCSON";
+
+
+//////////////////////////////////////////
+// FUNCTION saveSearchHistory() 
+function saveSearchHistory () {
+  localStorage.setItem("lastSearch", lastSearch);
+  localStorage.setItem("searchCityList", JSON.stringify(searchCityList));
+}
+
+//////////////////////////////////////////
+// FUNCTION loadSearchHistory()
+// retrieves the last city searched
+// and the search history from 
+// localstorage
+
+function loadSearchHistory() {
+  console.log("loading search history....")
+  var lastSearch = localStorage.getItem("lastSearch");
+  if (lastSearch == null) {
+    lastSearch = lastSearchDefault;
+    console.log(`got ${lastSearch} from default`);
+  } 
+/////////////////   won't let me push to a null list ???????
+  searchCityList = JSON.parse(localStorage.getItem("searchCityList"));
+  if (searchCityList == null) {
+    console.log("pulled an empty searchCityList")
+  }
+}
 
 //////////////////////////////////////////
 // FUNCTION updateCityButtons()
@@ -22,7 +51,8 @@ var lastSearch = "TUCSON";
 function updateCityButtons() {
   var searchHistoryEl = document.getElementById('search-history');
   searchHistoryEl.innerHTML = '';
-
+  // can't get length of null list?
+  // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   for (var i = 0; i < searchCityList.length; i++) {
     // console.log(`appending button ${i}: ${searchCityList[i]}`);
     var newButton = document.createElement("button");
@@ -54,6 +84,7 @@ function addCityName(city) {
 //
 function displayWeatherData(city) {
   lastSearch = city;
+  saveSearchHistory ();
   // Get current weather conditions
   // and the lat long of the city
   fetch(
@@ -135,6 +166,8 @@ function displayWeatherData(city) {
 
 let today = moment().format("MM-DD-YYYY")
 
+// get search history from local storage
+loadSearchHistory();
 
 // initialize the display with the last
 // city searched and add search history
