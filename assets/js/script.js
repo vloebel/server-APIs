@@ -11,13 +11,19 @@ const apiKey = "&appid=47cc7111aeaa92ded720903e4f89338c"
 const iconURL = "http://openweathermap.org/img/wn/"
 
 var searchCityList = ["ST. LOUIS", "ALBUQUERQUE", "LOS ANGELES", "MILWAUKEE"];
-var lastSearch = "MILWAUKEE";
+var lastSearch = "TUCSON";
 
+//////////////////////////////////////////
+// FUNCTION updateCityButtons()
+// refreshes the search history by
+// clearing and appending buttons for each
+// city in the searchCityList.
+//
 function updateCityButtons() {
   var searchHistoryEl = document.getElementById('search-history');
   searchHistoryEl.innerHTML = '';
-  
-  for (var i = 0; i < searchCityList.length; i++)  {
+
+  for (var i = 0; i < searchCityList.length; i++) {
     // console.log(`appending button ${i}: ${searchCityList[i]}`);
     var newButton = document.createElement("button");
     newButton.textContent = searchCityList[i];
@@ -25,34 +31,41 @@ function updateCityButtons() {
     searchHistoryEl.appendChild(newButton);
   }
 }
-
-// search city list is saved in all caps to
-// reduce fussing with user input
+//////////////////////////////////////////
+// FUNCTION addCityName
+// -Adds city to search history if not already there. 
+// -saves last search in global variable so it
+// can be used to update search button text field
+//
 function addCityName(city) {
-  city = city.toUpperCase();
-  if (! searchCityList.includes(city)) {
+  if (!searchCityList.includes(city)) {
     console.log(`adding city ${city}`);
     searchCityList.push(city);
-    lastSearch = city;
-
-    console.log(` ${searchCityList}`);
+    // console.log(` ${searchCityList}`);
     updateCityButtons();
   }
 }
-function getWeatherData(city) { 
+/////////////////////////////////////////////
+// FUNCTION displayWeatherData (city)
+// Calls openweather api to get lat/long of city
+// Calls openweather oneCall api to get weather data
+// Updates display with current weather
+// --and five day forecast
+//
+function displayWeatherData(city) {
+  lastSearch = city;
   // Get current weather conditions
   // and the lat long of the city
-
   fetch(
     openWeatherAPI +
     city +
     weatherUnits +
     apiKey
 
-  ).then(function (resp) { 
+  ).then(function (resp) {
     return resp.json();
 
-  }).then(function (data) { 
+  }).then(function (data) {
     // extract longitude and latitude from first call
     var longitude = data.coord.lon;
     var latitude = data.coord.lat;
@@ -95,7 +108,7 @@ function getWeatherData(city) {
 
       // build the forecast cards
 
-      for (var i = 1; i <= 5; i++) { 
+      for (var i = 1; i <= 5; i++) {
         // date
         var new_date = moment(today, "MM-DD-YYYY").add(i, 'days').format("MM-DD-YYYY");
         var cardId = `today-plus-` + `${i}`;
@@ -121,29 +134,36 @@ function getWeatherData(city) {
 ////////////////////////////////
 
 let today = moment().format("MM-DD-YYYY")
-// initialize display with default city
 
 
+// initialize the display with the last
+// city searched and add search history
 var searchCityEl = document.getElementById('search-city');
+updateCityButtons();
 searchCityEl.textContent = lastSearch;
-getWeatherData(lastSearch);
+displayWeatherData(lastSearch);
 
 
-//put an event listener on the search button
+// search-button text field event listener
+// on click -get city - convert to uppercase
+// - add to search history - display weather 
 var cityEl = document.getElementById("search-button");
 cityEl.addEventListener('click', function () {
   searchCity = document.getElementById('search-city').value;
+  searchCity = searchCity.toUpperCase();
   addCityName(searchCity);
-  getWeatherData(searchCity);
+  displayWeatherData(searchCity);
 });
 
-//put an event listener on the city list
+//search-history list event listener
+//on click - get city name from clicked button
+//- display weather  
 var cityListEl = document.getElementById("search-history");
 cityListEl.addEventListener('click', event => {
   var searchCityEl = event.target;
   searchCity = searchCityEl.textContent;
-  console.log(`Searching the clicked button: ${searchCity}`);
-  getWeatherData(searchCity);
+  // searchCity = searchCity.toUpperCase();
+  displayWeatherData(searchCity);
 
 
 });
