@@ -11,7 +11,7 @@
 
 <body>
   <header class="jumbotron">
-    <h1 class="col-12">Weather Dashboard</h1>
+    <h1>Weather Dashboard</h1>
   </header>
   <main class="container">
     <!-- Search and history in one column, weather in the other -->
@@ -19,9 +19,9 @@
       <div id="search-col" class="col-lg-3 col-med-3 col-sm-12  search-section">
         <h2 class="city-prompt">Search for a city</h2>
         <div id="city-error-msg">
-          <!-- append error message if city lookup fails--> 
+          <!-- append error message if city lookup fails-->
         </div>
-         <input type="text" id="search-city" value="Tucson">
+        <input type="text" id="search-city" value="Tucson">
         <button id="search-button">Search</button>
         <div id="search-history">
           <!-- append city list and listen for clicks -->
@@ -31,82 +31,72 @@
       <!--Second colummn has current conditions and forecast -->
       <div class="col-lg-9 col-med-9 col-sm-12  forecast-section">
         <!-- current weather conditions -->
-        <div id="forecast-today" style="border: 5px; padding:1em">
+        <div id="forecast-today" >
           <h2><span id="display-city"> </span>
             <span id="date-today"></span>
             <img id="current-weather-icon" class="inlineIcon" src=" " alt="current weather icon">
           </h2>
-          <p>Temperature: <span id="current-temp"> </span></p>
-          <p>Humidity: <span id="current-humidity"> </span></p>
-          <p>Wind Speed: <span id="current-wind-speed"> </span></p>
+          <p>Temperature: <span id="current-temp"></span>&#8457</p>
+          <p>Humidity: <span id="current-humidity"></span>%</p>
+          <p>Wind Speed: <span id="current-wind-speed"></span> MPH</p>
           <p>UV Index: <span id="current-uvi"> </span></p>
         </div>
         <!-- future forecast -->
-        <div id="five-day-forecast" class="container">
+        <div id="five-day-forecast" class="container forecast-five">
           <h2> 5-Day Forecast</h2>
           <div class="row forecast-cards">
             <!-- Weather Forecast Cards -->
 
             <div class="col-md-2">
-              <div class="card mt-2">
-                <div id="today-plus-1" class="card-body">
-                  <h5 class="card-title"><span class="card-date"></span></h5>
-                  <img class="card-icon" src=" " alt="weather icon">
-                  <h6 class="card-info mb-2 ">Temp: <span class="card-temp"></span> &#8457</h6>
-                  <h6 class="card-info mb-2 ">Humidity: <span class="card-humidity"></span> %</h6>
-                </div>
+              <div id="today-plus-1" class="card-body">
+                <h5 class="card-title"><span class="card-date"></span></h5>
+                <img class="card-icon" src=" " alt="weather icon">
+                <h6 class="card-info mb-2 ">Temp: <span class="card-temp"></span> &#8457</h6>
+                <h6 class="card-info mb-2 ">Humidity: <span class="card-humidity"></span> %</h6>
               </div>
             </div>
 
             <div class="col-md-2">
-              <div class="card mt-2">
-                <div id="today-plus-2" class="card-body">
-                  <h5 class="card-title"><span class="card-date"></span></h5>
-                  <img class="card-icon" src=" " alt="weather icon">
-                  <h6 class="card-info mb-2 ">Temp: <span class="card-temp"></span> &#8457</h6>
-                  <h6 class="card-info mb-2 ">Humidity: <span class="card-humidity"></span> %</h6>
-                </div>
+              <div id="today-plus-2" class="card-body">
+                <h5 class="card-title"><span class="card-date"></span></h5>
+                <img class="card-icon" src=" " alt="weather icon">
+                <h6 class="card-info mb-2 ">Temp: <span class="card-temp"></span> &#8457</h6>
+                <h6 class="card-info mb-2 ">Humidity: <span class="card-humidity"></span> %</h6>
               </div>
             </div>
 
             <div class="col-md-2">
-              <div class="card mt-2">
-                <div id="today-plus-3" class="card-body">
-                  <h5 class="card-title"><span class="card-date"></span></h5>
-                  <img class="card-icon" src=" " alt="weather icon">
-                  <h6 class="card-info mb-2 ">Temp: <span class="card-temp"></span> &#8457</h6>
-                  <h6 class="card-info mb-2 ">Humidity: <span class="card-humidity"></span> %</h6>
-                </div>
+              <div id="today-plus-3" class="card-body">
+                <h5 class="card-title"><span class="card-date"></span></h5>
+                <img class="card-icon" src=" " alt="weather icon">
+                <h6 class="card-info mb-2 ">Temp: <span class="card-temp"></span> &#8457</h6>
+                <h6 class="card-info mb-2 ">Humidity: <span class="card-humidity"></span> %</h6>
               </div>
             </div>
 
             <div class="col-md-2">
-              <div class="card mt-2">
-                <div id="today-plus-4" class="card-body">
-                  <h5 class="card-title"><span class="card-date"></span></h5>
-                  <img class="card-icon" src=" " alt="weather icon">
-                  <h6 class="card-info mb-2 ">Temp: <span class="card-temp"></span> &#8457</h6>
-                  <h6 class="card-info mb-2 ">Humidity: <span class="card-humidity"></span> %</h6>
-                </div>
+              <div id="today-plus-4" class="card-body">
+                <h5 class="card-title"><span class="card-date"></span></h5>
+                <img class="card-icon" src=" " alt="weather icon">
+                <h6 class="card-info mb-2 ">Temp: <span class="card-temp"></span> &#8457</h6>
+                <h6 class="card-info mb-2 ">Humidity: <span class="card-humidity"></span> %</h6>
               </div>
             </div>
 
             <div class="col-md-2">
-              <div class="card mt-2">
-                <div id="today-plus-5" class="card-body">
-                  <h5 class="card-title"><span class="card-date"></span></h5>
-                  <img class="card-icon" src=" " alt="weather icon">
-                  <h6 class="card-info mb-2 ">Temp: <span class="card-temp"></span> &#8457</h6>
-                  <h6 class="card-info mb-2 ">Humidity: <span class="card-humidity"></span> %</h6>
-                </div>
+              <div id="today-plus-5" class="card-body">
+                <h5 class="card-title"><span class="card-date"></span></h5>
+                <img class="card-icon" src=" " alt="weather icon">
+                <h6 class="card-info mb-2 ">Temp: <span class="card-temp"></span> &#8457</h6>
+                <h6 class="card-info mb-2 ">Humidity: <span class="card-humidity"></span> %</h6>
               </div>
             </div>
 
-          </div> 
+          </div>
           <!-- end forecast card row -->
-        </div> 
+        </div>
         <!-- ^five-day-forecast container -->
-      </div> 
+      </div>
       <!-- ^forecast-section-->
     </div>
     <!-- ^search-and-display-box -->
