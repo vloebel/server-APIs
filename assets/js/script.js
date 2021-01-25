@@ -1,14 +1,14 @@
 
 
-const openWeatherAPI = "http://api.openweathermap.org/data/2.5/weather?q="
+const openWeatherAPI = "https://api.openweathermap.org/data/2.5/weather?q="
+
 const openWeatherOneCallAPI = "https://api.openweathermap.org/data/2.5/onecall?"
 // openWeatherForecastAPI is paid only
-// const openWeatherForecastAPI = "https://api.openweathermap.org/data/2.5/forecast/daily?q="
 const excludeString = "&exclude=minutely,hourly,alerts"
 const weatherUnits = "&units=imperial"
 // APIkey username vk
 const apiKey = "&appid=47cc7111aeaa92ded720903e4f89338c"
-const iconURL = "http://openweathermap.org/img/wn/"
+const iconURL = "https://openweathermap.org/img/wn/"
 
 var searchCityList = [];
 var lastSearch = "TUCSON";
