@@ -104,9 +104,9 @@ function displayWeatherData(city) {
       // TBD: refine error processing
       var errMsgDivEL = document.getElementById("city-error-msg");
       var errMsgEl = document.createElement("h3");
-      errMsgEl.class = "error";
+      errMsgEl.setAttribute("class","error");
       errMsgEl.textContent = "Please enter a valid city name";
-      errMsgDivEL.appendChild(errMsgEl);y
+      errMsgDivEL.appendChild(errMsgEl);
       
     }
   }).then(function (data) {
