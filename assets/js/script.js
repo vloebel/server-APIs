@@ -93,7 +93,6 @@ function displayWeatherData(city) {
       lastSearch = city;
       searchCityEl = document.getElementById('search-city');
       searchCityEl.value = lastSearch;
-
       addCityName(city);
       saveSearchHistory();
       updateCityButtons();
@@ -209,6 +208,15 @@ cityListEl.addEventListener('click', event => {
   var searchCityEl = event.target;
   searchCity = searchCityEl.textContent;
   displayWeatherData(searchCity);
+});
 
+// EVENT LISTENER ON CLEAR HISTORY BUTTON
+// on click - clear the search history 
+var clearButtonEl = document.getElementById("clear-search-btn");
+clearButtonEl.addEventListener('click', function () {
+  cityListEl = document.getElementById("search-history");
+  cityListEl.innerHTML = '';
+  searchCityList=[];
+  saveSearchHistory();
 
 });

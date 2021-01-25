@@ -25,7 +25,12 @@ header h1 {
 body{
   background-color: var(--light-blue);
 }
+.search-btn,
+.clear-btn {
+  color:var(--light);
+  background-color:var(--dark-blue);
 
+}
 .city-button {
   width:75%;
   max-width:180px ;
