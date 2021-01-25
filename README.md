@@ -7,6 +7,13 @@
 **Modification History**  
 
 
+* TBD These improvements were deferred due to time constraints:
+  * search accepts states & countries as well as cities - this should be adjusted or clarified
+  * applicaton and github repo should be renamed to "weather-dashboad"  
+* added five-day forecast
+* save and load search history to local storage
+* get lat/long from openweathermap api
+ & remaining weather data from the openweathermap One Call endpoint
 * Set up HTML & basic CSS
 
 ## Overview
